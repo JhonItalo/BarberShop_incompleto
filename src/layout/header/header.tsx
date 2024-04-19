@@ -14,7 +14,7 @@ export default function Header() {
                 <CardContent className='py-6 px-5 flex justify-between items-center'>
                     <Image src={logo} alt='Barber shop' />
                     <Button className='w-8 h-8' variant="outline" size='icon'>
-                        <MenuIcon size={18} />
+                        <MenuIcon size={20} />
                     </Button>
                 </CardContent>
 
