@@ -22,7 +22,7 @@ model User {
 model Barbershop {
   id       String    @id @default(uuid())
   name     String
-  adresss  String
+  address  String
   imageUrl String
   service  Service[]
   Booking  Booking[]
@@ -33,6 +33,7 @@ model Service {
   name         String
   price        Decimal    @db.Decimal(10, 2)
   description  String
+  imageUrl     String
   barbershopId String
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   Booking      Booking[]
