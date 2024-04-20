@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 import { Barbershop } from "@prisma/client";
 import { Button } from '@/components/ui/button';
+import { StarIcon } from 'lucide-react';
 
 
 interface BarbershopItemProps {
@@ -16,6 +17,12 @@ export default function RecomendadosItem({ barbershop }: BarbershopItemProps) {
         <Card className="min-w-[167px] max-w-[167px] rounded-2xl">
             <CardContent className=' flex flex-col p-1' >
                 <div className="w-full h-[159px] relative">
+                    <div className="absolute top-2 left-2 z-50">
+                        <Badge variant="secondary" className="opacity-90 flex gap-1 items-center top-3 left-3">
+                            <StarIcon size={12} className="fill-primary text-primary" />
+                            <span className="text-xs">5,0</span>
+                        </Badge>
+                    </div>
                     <Image
                         alt={barbershop.name}
                         src={barbershop.imageUrl}
