@@ -2,6 +2,7 @@ import Header from "@/layout/header/header";
 import { format } from "date-fns";
 import { ptBR } from 'date-fns/locale';
 import Search from "./(home)/_components/_search/search";
+import Agendamentos from "@/components/agendamentos/agendamentos";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         </p>
       </div>
       <Search />
+      <Agendamentos />
 
 
 
