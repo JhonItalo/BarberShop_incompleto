@@ -21,20 +21,20 @@ export default async function BarbershopDetailsPage({ params }: BarbershopDetail
             id: params.id,
         },
         include: {
-            service: true
+            services: true
         },
     });
 
     if (!barbershop) {
         return null;
     }
-    console.log(barbershop.service)
+    console.log(barbershop.services)
     return (
         <>
             <BarberShopInfo barbershop={barbershop}></BarberShopInfo>
             <div className="px-5 flex flex-col gap-4 py-6">
 
-                {barbershop.service.map((service) => (
+                {barbershop.services.map((service) => (
                     <BarberShopServices key={service.id} service={service} />
                 ))}
             </div>
