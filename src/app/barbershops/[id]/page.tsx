@@ -1,7 +1,7 @@
 import React from 'react'
 import { db } from '@/lib/prisma';
 import BarberShopInfo from './_components/barberShopInfo/barberShopInfo';
-import BarberShopServices from './_components/barberShopsServices/barberShopServices';
+import BarberShopServices from './_components/barberShopServices/barberShopServices';
 
 interface BarbershopDetailsPageProps {
     params: {
@@ -28,12 +28,11 @@ export default async function BarbershopDetailsPage({ params }: BarbershopDetail
     if (!barbershop) {
         return null;
     }
-    console.log(barbershop.services)
     return (
         <>
-            <BarberShopInfo barbershop={barbershop}></BarberShopInfo>
-            <div className="px-5 flex flex-col gap-4 py-6">
+            <BarberShopInfo barbershop={barbershop} />
 
+            <div className="px-5 flex flex-col gap-4 py-6">
                 {barbershop.services.map((service) => (
                     <BarberShopServices key={service.id} service={service} />
                 ))}
