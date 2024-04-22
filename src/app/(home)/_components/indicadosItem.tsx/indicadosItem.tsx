@@ -8,11 +8,11 @@ import { Button } from '@/components/ui/button';
 import { StarIcon } from 'lucide-react';
 
 
-interface BarbershopItemProps {
+interface ItemPropsIndicadosItem {
     barbershop: Barbershop;
 }
 
-export default function RecomendadosItem({ barbershop }: BarbershopItemProps) {
+export default function IndicadosItem({ barbershop }: ItemPropsIndicadosItem) {
     return (
         <Card className="min-w-[167px] max-w-[167px] rounded-2xl">
             <CardContent className=' flex flex-col p-1' >
