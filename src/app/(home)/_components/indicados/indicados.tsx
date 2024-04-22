@@ -2,17 +2,12 @@ import React from 'react';
 import { Barbershop } from "@prisma/client";
 import IndicadosItem from '../indicadosItem.tsx/indicadosItem';
 
-
-
 interface ItemPropsIndicados {
     name: string
     listBarberShop: Barbershop[];
 }
 
 export default async function Indicados({ name, listBarberShop }: ItemPropsIndicados) {
-
-
-
     return (
         <>
             {listBarberShop.length > 0 && (

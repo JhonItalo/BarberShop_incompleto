@@ -1,7 +1,9 @@
+'use client'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from "next/navigation";
 
 import { Barbershop } from "@prisma/client";
 import { Button } from '@/components/ui/button';
@@ -13,6 +15,13 @@ interface ItemPropsIndicadosItem {
 }
 
 export default function IndicadosItem({ barbershop }: ItemPropsIndicadosItem) {
+
+    const router = useRouter();
+
+    const handleClickAgendamento = () => {
+        router.push(`/barbershops/${barbershop.id}`);
+    };
+
     return (
         <Card className="min-w-[167px] max-w-[167px] rounded-2xl">
             <CardContent className=' flex flex-col p-1' >
@@ -37,7 +46,7 @@ export default function IndicadosItem({ barbershop }: ItemPropsIndicadosItem) {
                 <div className="px-2 pb-3">
                     <h2 className="font-bold mt-2 overflow-hidden text-ellipsis text-nowrap">{barbershop.name}</h2>
                     <p className="text-sm text-gray-400 overflow-hidden text-ellipsis text-nowrap">{barbershop.address}</p>
-                    <Button className="w-full mt-3" variant="secondary">
+                    <Button className="w-full mt-3" variant="secondary" onClick={handleClickAgendamento}>
                         Reservar
                     </Button>
                 </div>
