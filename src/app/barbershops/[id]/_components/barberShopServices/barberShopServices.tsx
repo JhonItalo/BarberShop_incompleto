@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { saveBooking } from '../../_actions/saveBooking';
 import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { getDayBookings } from '../../_actions/getDayBookings';
 
 interface ItemPropsBarberShopServices {
   barbershop: Barbershop;
@@ -34,19 +35,19 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
   const [dayBookings, setDayBookings] = useState<Booking[]>([]);
 
-  /*  useEffect(() => {
-     if (!date) {
-       return;
-     }
- 
-     const refreshAvailableHours = async () => {
-       const _dayBookings = await getDayBookings(barbershop.id, date);
-       setDayBookings(_dayBookings);
-     };
- 
-     refreshAvailableHours();
-   }, [date, barbershop.id]);
-  */
+  useEffect(() => {
+    if (!date) {
+      return;
+    }
+
+    const refreshAvailableHours = async () => {
+      const _dayBookings = await getDayBookings(barbershop.id, date);
+      setDayBookings(_dayBookings);
+    };
+
+    refreshAvailableHours();
+  }, [date, barbershop.id]);
+
   const handleDateClick = (date: Date | undefined) => {
     setDate(date);
     setHour(undefined);
