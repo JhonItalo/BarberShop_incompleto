@@ -14,6 +14,7 @@ import { addDays, format, setHours, setMinutes } from "date-fns";
 import { Button } from '@/components/ui/button';
 import { saveBooking } from '../../_actions/saveBooking';
 import { Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface ItemPropsBarberShopServices {
   barbershop: Barbershop;
@@ -23,68 +24,45 @@ interface ItemPropsBarberShopServices {
 
 
 export default function BarberShopServicesItem({ barbershop, service, isAuthenticated }: ItemPropsBarberShopServices) {
-
   const router = useRouter();
 
   const { data } = useSession();
 
   const [date, setDate] = useState<Date | undefined>(undefined);
-
   const [hour, setHour] = useState<string | undefined>();
-
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
-
-
+  const [sheetIsOpen, setSheetIsOpen] = useState(false);
   const [dayBookings, setDayBookings] = useState<Booking[]>([]);
 
-
-
-
-  const handleClickDate = (date: Date | undefined) => {
+  /*  useEffect(() => {
+     if (!date) {
+       return;
+     }
+ 
+     const refreshAvailableHours = async () => {
+       const _dayBookings = await getDayBookings(barbershop.id, date);
+       setDayBookings(_dayBookings);
+     };
+ 
+     refreshAvailableHours();
+   }, [date, barbershop.id]);
+  */
+  const handleDateClick = (date: Date | undefined) => {
     setDate(date);
     setHour(undefined);
   };
 
-
-
-  const handleClickHour = (time: string) => {
+  const handleHourClick = (time: string) => {
     setHour(time);
   };
 
-
-  const handleClickBooking = () => {
+  const handleBookingClick = () => {
     if (!isAuthenticated) {
       return signIn("google");
     }
   };
 
-  const timeList = useMemo(() => {
-    if (!date) {
-      return [];
-    }
-
-    return generateDayTimeList(date).filter((time) => {
-
-      const timeHour = Number(time.split(":")[0]);
-      const timeMinutes = Number(time.split(":")[1]);
-
-      const booking = dayBookings.find((booking) => {
-        const bookingHour = booking.date.getHours();
-        const bookingMinutes = booking.date.getMinutes();
-
-        return bookingHour === timeHour && bookingMinutes === timeMinutes;
-      });
-
-      if (!booking) {
-        return true;
-      }
-
-      return false;
-    });
-  }, [date, dayBookings]);
-
-
-  const handleSubmitBooking = async () => {
+  const handleBookingSubmit = async () => {
     setSubmitIsLoading(true);
 
     try {
@@ -104,24 +82,49 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
         userId: (data.user as any).id,
       });
 
-      /*    setSheetIsOpen(false);
-         setHour(undefined);
-         setDate(undefined);
-         toast("Reserva realizada com sucesso!", {
-           description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
-             locale: ptBR,
-           }),
-           action: {
-             label: "Visualizar",
-             onClick: () => router.push("/bookings"),
-           },
-         }); */
+      setSheetIsOpen(false);
+      setHour(undefined);
+      setDate(undefined);
+      toast("Reserva realizada com sucesso!", {
+        description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
+          locale: ptBR,
+        }),
+        action: {
+          label: "Visualizar",
+          onClick: () => router.push("/bookings"),
+        },
+      });
     } catch (error) {
       console.error(error);
     } finally {
       setSubmitIsLoading(false);
     }
   };
+
+  const timeList = useMemo(() => {
+    if (!date) {
+      return [];
+    }
+
+    return generateDayTimeList(date).filter((time) => {
+      const timeHour = Number(time.split(":")[0]);
+      const timeMinutes = Number(time.split(":")[1]);
+
+      const booking = dayBookings.find((booking) => {
+        const bookingHour = booking.date.getHours();
+        const bookingMinutes = booking.date.getMinutes();
+
+        return bookingHour === timeHour && bookingMinutes === timeMinutes;
+      });
+
+      if (!booking) {
+        return true;
+      }
+
+      return false;
+    });
+  }, [date, dayBookings]);
+
 
 
   return (
@@ -150,9 +153,9 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
                 }).format(Number(service.price))}
               </p>
 
-              <Sheet >
+              <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen} >
                 <SheetTrigger asChild>
-                  <Button variant="secondary" onClick={handleClickBooking} >
+                  <Button variant="secondary" onClick={handleBookingClick} >
                     Reservar
                   </Button>
                 </SheetTrigger>
@@ -162,16 +165,20 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
 
-                  <div className="py-6">
+                  <div className="py-5">
                     <Calendar
+
                       mode="single"
                       selected={date}
-                      onSelect={handleClickDate}
+                      onSelect={handleDateClick}
                       locale={ptBR}
                       fromDate={addDays(new Date(), 1)}
                       styles={{
-                        head: {
-                          overflow: "hidden"
+                        caption: {
+                          height: "fit-content",
+                          textTransform: "capitalize",
+                          overflow: "hidden",
+                          alignItems: "center"
                         },
                         head_cell: {
                           width: "100%",
@@ -191,19 +198,17 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
                           width: "32px",
                           height: "32px",
                         },
-                        caption: {
-                          textTransform: "capitalize",
-                        },
+
                       }}
                     />
                   </div>
 
 
                   {date && (
-                    <div className="flex gap-3 overflow-x-auto py-6 px-5 border-t border-solid border-secondary [&::-webkit-scrollbar]:hidden">
+                    <div className="flex gap-3 overflow-x-auto py-4 px-4 border-t border-solid border-secondary [&::-webkit-scrollbar]:hidden">
                       {timeList.map((time) => (
                         <Button
-                          onClick={() => handleClickHour(time)}
+                          onClick={() => handleHourClick(time)}
                           variant={hour === time ? "default" : "outline"}
                           className="rounded-full flex-none"
                           key={time}
@@ -258,7 +263,7 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
 
 
                   <SheetFooter className="px-5">
-                    <Button onClick={handleSubmitBooking} disabled={!hour || !date || submitIsLoading}>
+                    <Button onClick={handleBookingSubmit} disabled={!hour || !date || submitIsLoading}>
                       {submitIsLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       Confirmar reserva
                     </Button>
