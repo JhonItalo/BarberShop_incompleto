@@ -12,6 +12,8 @@ import { ptBR } from 'date-fns/locale';
 import { generateDayTimeList } from '../../_helpers/timeList';
 import { addDays, format, setHours, setMinutes } from "date-fns";
 import { Button } from '@/components/ui/button';
+import { saveBooking } from '../../_actions/saveBooking';
+import { Loader2 } from 'lucide-react';
 
 interface ItemPropsBarberShopServices {
   barbershop: Barbershop;
@@ -26,13 +28,16 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
 
   const { data } = useSession();
 
-
   const [date, setDate] = useState<Date | undefined>(undefined);
 
   const [hour, setHour] = useState<string | undefined>();
 
+  const [submitIsLoading, setSubmitIsLoading] = useState(false);
+
 
   const [dayBookings, setDayBookings] = useState<Booking[]>([]);
+
+
 
 
   const handleClickDate = (date: Date | undefined) => {
@@ -47,7 +52,7 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
   };
 
 
-  const handleClickAgendamentos = () => {
+  const handleClickBooking = () => {
     if (!isAuthenticated) {
       return signIn("google");
     }
@@ -78,6 +83,47 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
     });
   }, [date, dayBookings]);
 
+
+  const handleSubmitBooking = async () => {
+    setSubmitIsLoading(true);
+
+    try {
+      if (!hour || !date || !data?.user) {
+        return;
+      }
+
+      const dateHour = Number(hour.split(":")[0]);
+      const dateMinutes = Number(hour.split(":")[1]);
+
+      const newDate = setMinutes(setHours(date, dateHour), dateMinutes);
+
+      await saveBooking({
+        serviceId: service.id,
+        barbershopId: barbershop.id,
+        date: newDate,
+        userId: (data.user as any).id,
+      });
+
+      /*    setSheetIsOpen(false);
+         setHour(undefined);
+         setDate(undefined);
+         toast("Reserva realizada com sucesso!", {
+           description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
+             locale: ptBR,
+           }),
+           action: {
+             label: "Visualizar",
+             onClick: () => router.push("/bookings"),
+           },
+         }); */
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setSubmitIsLoading(false);
+    }
+  };
+
+
   return (
     <Card>
       <CardContent className="p-3 w-full">
@@ -106,7 +152,7 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
 
               <Sheet >
                 <SheetTrigger asChild>
-                  <Button variant="secondary" onClick={handleClickAgendamentos} >
+                  <Button variant="secondary" onClick={handleClickBooking} >
                     Reservar
                   </Button>
                 </SheetTrigger>
@@ -212,8 +258,9 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
 
 
                   <SheetFooter className="px-5">
-                    <Button disabled={!hour || !date}>
-                      Confirma reserva
+                    <Button onClick={handleSubmitBooking} disabled={!hour || !date || submitIsLoading}>
+                      {submitIsLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      Confirmar reserva
                     </Button>
                   </SheetFooter>
                 </SheetContent>
