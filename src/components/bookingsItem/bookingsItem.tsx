@@ -6,6 +6,11 @@ import { Avatar, AvatarImage } from '../ui/avatar'
 import { format, isFuture } from 'date-fns'
 import { ptBR } from 'date-fns/locale';
 import { Prisma } from '@prisma/client'
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
+import Image from 'next/image'
+import { Button } from '../ui/button'
+import { toast } from 'sonner'
+import { cancelBooking } from '@/actions/cancelBooking'
 
 
 interface BookingItemProps {
@@ -23,37 +28,97 @@ export default function BookingsItem({ booking }: BookingItemProps) {
 
     const isBookingConfirmed = isFuture(booking.date);
 
+    const handleCancelClick = async () => {
+        setIsDeleteLoading(true);
+
+        try {
+            await cancelBooking(booking.id);
+
+            toast.success("Reserva cancelada com sucesso!");
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsDeleteLoading(false);
+        }
+    };
+
 
     return (
-        <Card>
-            <CardContent className='flex p-0' >
-                <div className="p-3 flex flex-col flex-[3] gap-3 ">
-                    <Badge variant={isBookingConfirmed ? "default" : "secondary"} className="w-fit">
-                        {isBookingConfirmed ? "Confirmado" : "Finalizado"}
-                    </Badge>
-                    <div className='flex flex-col gap-2'>
-                        <h2 className="text-base font-bold capitalize">{booking.service.name}</h2>
+        <Sheet>
+            <SheetTrigger asChild>
+                <Card className="min-w-full">
+                    <CardContent className="py-0 flex px-0">
+                        <div className="flex flex-col gap-2 py-5 flex-[3] pl-5">
+                            <Badge variant={isBookingConfirmed ? "default" : "secondary"} className="w-fit">
+                                {isBookingConfirmed ? "Confirmado" : "Finalizado"}
+                            </Badge>
+                            <h2 className="font-bold">{booking.service.name}</h2>
 
-                        <div className='flex gap-2 items-center'>
-                            <Avatar className='w-6 h-6'>
-                                <AvatarImage src={booking.barbershop.imageUrl} />
-                            </Avatar>
+                            <div className="flex items-center gap-2">
+                                <Avatar className="h-6 w-6">
+                                    <AvatarImage src={booking.barbershop.imageUrl} />
+                                </Avatar>
 
-                            <h3 className='text-sm capitalize'>{booking.barbershop.name}</h3>
+                                <h3 className="text-sm">{booking.barbershop.name}</h3>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col items-center justify-center flex-1 border-l border-solid border-secondary">
+                            <p className="text-sm capitalize">
+                                {format(booking.date, "MMMM", {
+                                    locale: ptBR,
+                                })}
+                            </p>
+                            <p className="text-2xl">{format(booking.date, "dd")}</p>
+                            <p className="text-sm">{format(booking.date, "hh:mm")}</p>
+                        </div>
+                    </CardContent>
+                </Card>
+            </SheetTrigger>
+
+            <SheetContent className="px-0">
+
+                <SheetHeader className="px-5 text-left pb-6 border-b border-solid border-secondary">
+                    <SheetTitle>Informações da Reserva</SheetTitle>
+                </SheetHeader>
+
+                <div className="px-5">
+                    <div className="relative h-[180px] w-full mt-6">
+                        <Image src="/barbershop-map.png" fill alt={booking.barbershop.name} />
+
+                        <div className="w-full absolute bottom-4 left-0 px-5">
+                            <Card>
+                                <CardContent className="p-3 flex gap-2">
+                                    <Avatar>
+                                        <AvatarImage src={booking.barbershop.imageUrl} />
+                                    </Avatar>
+
+                                    <div>
+                                        <h2 className="font-bold">{booking.barbershop.name}</h2>
+                                        <h3 className="text-xs overflow-hidden text-nowrap text-ellipsis">{booking.barbershop.address}</h3>
+                                    </div>
+                                </CardContent>
+                            </Card>
                         </div>
                     </div>
 
+                    <Badge variant={isBookingConfirmed ? "default" : "secondary"} className="w-fit my-3">
+                        {isBookingConfirmed ? "Confirmado" : "Finalizado"}
+                    </Badge>
+
+
+
+
+                    <SheetFooter className="flex-row gap-3 mt-6">
+                        <SheetClose asChild>
+                            <Button className="w-full" variant="secondary">
+                                Voltar
+                            </Button>
+                        </SheetClose>
+                    </SheetFooter>
+
                 </div>
-                <div className="flex flex-col items-center justify-center flex-1 border-l border-solid border-secondary">
-                    <p className="text-sm capitalize">
-                        {format(booking.date, "MMMM", {
-                            locale: ptBR,
-                        })}
-                    </p>
-                    <p className="text-2xl">{format(booking.date, "dd")}</p>
-                    <p className="text-sm">{format(booking.date, "hh:mm")}</p>
-                </div>
-            </CardContent>
-        </Card>
+            </SheetContent>
+        </Sheet>
     )
 }

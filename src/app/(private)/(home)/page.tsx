@@ -36,7 +36,6 @@ export default async function HomePage() {
   ]);
   return (
     <>
-
       <main className="pb-2">
         <div className="py-6 px-5">
           <h2 className="text-xl ">Olá, user</h2>
