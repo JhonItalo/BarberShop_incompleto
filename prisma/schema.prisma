@@ -32,7 +32,7 @@ model Service {
   name         String
   price        Decimal    @db.Decimal(10, 2)
   barbershopId String
-  barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   description  String
   bookings     Booking[]
   imageUrl     String
@@ -43,9 +43,9 @@ model Booking {
   userId       String
   user         User       @relation(fields: [userId], references: [id])
   serviceId    String
-  service      Service    @relation(fields: [serviceId], references: [id])
+  service      Service    @relation(fields: [serviceId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   barbershopId String
-  barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   date         DateTime
 }
 

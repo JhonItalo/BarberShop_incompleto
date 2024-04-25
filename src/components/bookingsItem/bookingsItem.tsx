@@ -11,6 +11,7 @@ import Image from 'next/image'
 import { Button } from '../ui/button'
 import { toast } from 'sonner'
 import { cancelBooking } from '@/actions/cancelBooking'
+import BookingInfo from '../bookingInfo/bookingInfo'
 
 
 interface BookingItemProps {
@@ -33,7 +34,6 @@ export default function BookingsItem({ booking }: BookingItemProps) {
 
         try {
             await cancelBooking(booking.id);
-
             toast.success("Reserva cancelada com sucesso!");
         } catch (error) {
             console.error(error);
@@ -82,7 +82,7 @@ export default function BookingsItem({ booking }: BookingItemProps) {
                     <SheetTitle>Informações da Reserva</SheetTitle>
                 </SheetHeader>
 
-                <div className="px-5">
+                <div className="px-5 ">
                     <div className="relative h-[180px] w-full mt-6">
                         <Image src="/barbershop-map.png" fill alt={booking.barbershop.name} />
 
@@ -106,7 +106,7 @@ export default function BookingsItem({ booking }: BookingItemProps) {
                         {isBookingConfirmed ? "Confirmado" : "Finalizado"}
                     </Badge>
 
-
+                    <BookingInfo booking={booking} />
 
 
                     <SheetFooter className="flex-row gap-3 mt-6">
@@ -114,7 +114,11 @@ export default function BookingsItem({ booking }: BookingItemProps) {
                             <Button className="w-full" variant="secondary">
                                 Voltar
                             </Button>
+                       
                         </SheetClose>
+                        <Button className="w-full" variant="secondary">
+                                Cancelar reserva
+                            </Button>
                     </SheetFooter>
 
                 </div>

@@ -34,11 +34,14 @@ export default async function HomePage() {
       })
       : Promise.resolve([]),
   ]);
+  
   return (
     <>
       <main className="pb-2">
         <div className="py-6 px-5">
-          <h2 className="text-xl ">Olá, user</h2>
+          <h2 className="text-xl font-bold">
+            {session?.user ? `Olá, ${session.user.name?.split(" ")[0]}!` : "Olá! Vamos agendar um corte hoje?"}
+          </h2>
           <p className="capitalize text-sm">
             {format(new Date(), "EEEE',' dd 'de' MMMM", {
               locale: ptBR,

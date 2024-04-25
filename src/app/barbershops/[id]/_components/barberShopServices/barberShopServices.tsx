@@ -59,7 +59,7 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
 
   const handleBookingClick = () => {
     if (!isAuthenticated) {
-      return signIn("google");
+      return signIn();
     }
   };
 

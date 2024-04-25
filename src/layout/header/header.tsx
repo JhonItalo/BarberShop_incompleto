@@ -1,6 +1,8 @@
+'use client'
+
 import { Card, CardContent } from '@/components/ui/card'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../../public/logo.png'
 import { Button } from '@/components/ui/button'
 import { MenuIcon } from 'lucide-react'
@@ -11,6 +13,9 @@ import SideMenu from '../sideMenu/sideMenu'
 
 
 export default function Header() {
+
+    const [sheetIsOpen, setSheetIsOpen] = useState(false);
+
     return (
         <header>
             <Card>
@@ -20,7 +25,7 @@ export default function Header() {
                     </Link>
 
 
-                    <Sheet>
+                    <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen} >
                         <SheetTrigger asChild>
                             <Button variant="outline" size="icon">
                                 <MenuIcon size={16} />
@@ -28,7 +33,7 @@ export default function Header() {
                         </SheetTrigger>
 
                         <SheetContent className="p-0">
-                            <SideMenu />
+                            <SideMenu isOpen={setSheetIsOpen} />
                         </SheetContent>
                     </Sheet>
                 </CardContent>

@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { Barbershop } from '@prisma/client';
 import { Button } from '@/components/ui/button';
@@ -16,6 +16,8 @@ export default function BarberShopInfo({ barbershop }: ItemPropsBarberShopInfo) 
 
     const router = useRouter();
 
+    const [sheetIsOpen, setSheetIsOpen] = useState(false);
+
     const handleBackClick = () => {
         router.replace("/");
     };
@@ -27,7 +29,7 @@ export default function BarberShopInfo({ barbershop }: ItemPropsBarberShopInfo) 
                     <ChevronLeftIcon />
                 </Button>
 
-                <Sheet>
+                <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}  >
                     <SheetTrigger asChild>
                         <Button size="icon" variant="outline" className="z-50 absolute top-4 right-4">
                             <MenuIcon />
@@ -35,7 +37,7 @@ export default function BarberShopInfo({ barbershop }: ItemPropsBarberShopInfo) 
                     </SheetTrigger>
 
                     <SheetContent className="p-0">
-                        <SideMenu />
+                        <SideMenu isOpen={setSheetIsOpen} />
                     </SheetContent>
                 </Sheet>
 

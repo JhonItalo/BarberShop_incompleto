@@ -40,7 +40,8 @@ export default async function BarbershopDetailsPage({ params }: BarbershopDetail
                     <BarberShopServices
                         key={service.id}
                         barbershop={barbershop}
-                        service={service} isAuthenticated={!!session?.user} />
+                        service={service} 
+                        isAuthenticated={!!session?.user} />
                 ))}
             </div>
 

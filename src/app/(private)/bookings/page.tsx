@@ -38,6 +38,7 @@ export default async function BookingsPage() {
       },
     }),
   ]);
+  
   return (
     <>
       <div className="px-5 py-6">
