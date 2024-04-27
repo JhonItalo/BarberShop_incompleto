@@ -1,0 +1,33 @@
+.banner_main {
+    background-image: url("/backgournd-bannermain.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+}
+
+
+
+
+.booking_items::-webkit-scrollbar {
+    width: 5px;
+
+}
+
+.booking_items::-webkit-scrollbar-thumb {
+    background-color: #636262;
+    border-radius: 5px;
+
+}
+
+.booking_items::-moz-scrollbar {
+    width: 5px;
+
+}
+
+
+.booking_items::-moz-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+
+}

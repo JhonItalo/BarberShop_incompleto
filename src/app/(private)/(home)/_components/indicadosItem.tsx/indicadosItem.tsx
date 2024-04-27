@@ -23,9 +23,12 @@ export default function IndicadosItem({ barbershop }: ItemPropsIndicadosItem) {
     };
 
     return (
-        <Card className="min-w-[167px] max-w-[167px] rounded-2xl">
-            <CardContent className=' flex flex-col p-1' >
-                <div className="w-full h-[159px] relative">
+        <Card className="w-[167px] rounded-2xl flex-none 
+        xl:w-[205px]
+        lg:w-[220px]">
+            <CardContent className='flex flex-col p-1' >
+
+                <div className="w-full h-[159px] relative lg:h-[163px] lg:p-1">
                     <div className="absolute top-2 left-2 z-50">
                         <Badge variant="secondary" className="opacity-90 flex gap-1 items-center top-3 left-3">
                             <StarIcon size={12} className="fill-primary text-primary" />
@@ -43,10 +46,11 @@ export default function IndicadosItem({ barbershop }: ItemPropsIndicadosItem) {
                     />
 
                 </div>
-                <div className="px-2 pb-3">
-                    <h2 className="font-bold mt-2 overflow-hidden text-ellipsis text-nowrap">{barbershop.name}</h2>
-                    <p className="text-sm text-gray-400 overflow-hidden text-ellipsis text-nowrap">{barbershop.address}</p>
-                    <Button className="w-full mt-3" variant="secondary" onClick={handleClickAgendamento}>
+
+                <div className="px-2 pb-3 lg:p-3">
+                    <h2 className="font-bold mt-2 overflow-hidden text-ellipsis text-nowrap lg:mt-0">{barbershop.name}</h2>
+                    <p className="text-sm text-gray-400 overflow-hidden text-ellipsis text-nowrap lg:mt-2">{barbershop.address}</p>
+                    <Button className="w-full mt-3 lg:text-sm lg:font-bold" variant="secondary" onClick={handleClickAgendamento}>
                         Reservar
                     </Button>
                 </div>

@@ -83,9 +83,12 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
         userId: (data.user as any).id,
       });
 
+
+
       setSheetIsOpen(false);
       setHour(undefined);
       setDate(undefined);
+
       toast("Reserva realizada com sucesso!", {
         description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
           locale: ptBR,
@@ -95,6 +98,7 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
           onClick: () => router.push("/bookings"),
         },
       });
+
     } catch (error) {
       console.error(error);
     } finally {

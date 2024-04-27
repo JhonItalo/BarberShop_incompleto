@@ -11,7 +11,7 @@ export default async function Indicados({ name, listBarberShop }: ItemPropsIndic
     return (
         <>
             {listBarberShop.length > 0 && (
-                <div className='py-4 px-5 flex flex-col gap-3  '>
+                <div className='py-4 px-5 flex flex-col gap-3 lg:hidden '>
                     <h2 className="text-xs uppercase text-gray-400 font-bold">{name}</h2>
                     <div className='flex gap-4  overflow-x-auto [&::-webkit-scrollbar]:hidden'>
                         {listBarberShop.map((item) => (

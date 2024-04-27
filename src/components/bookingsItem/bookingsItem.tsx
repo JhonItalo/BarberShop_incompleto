@@ -48,7 +48,7 @@ export default function BookingsItem({ booking }: BookingItemProps) {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <Card className="min-w-full">
+                <Card className="min-w-full lg:flex-none">
                     <CardContent className="py-0 flex px-0">
                         <div className="flex flex-col gap-2 py-5 flex-[3] pl-5">
                             <Badge variant={isBookingConfirmed ? "default" : "secondary"} className="w-fit">
