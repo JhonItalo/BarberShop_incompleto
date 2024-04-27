@@ -26,7 +26,10 @@ export default function Header() {
         <header>
             <Card className='lg:rounded-none'>
                 <CardContent className='py-6 px-5 flex justify-between items-center
-                lg:px-32 lg:py-8
+                2xl:bg-yellow-400
+                xl:py-5
+                lg:w-[82%] lg:mx-auto lg:px-0 lg:py-8 
+                lg:w-[82%] lg:mx-auto lg:px-0 lg:py-8 
                 '>
                     <Link href="/">
                         <svg width="130" height="22" aria-label='Logo barber shop' viewBox="0 0 130 22" fill="none" xmlns="http://www.w3.org/2000/svg">
