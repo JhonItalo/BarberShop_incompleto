@@ -41,11 +41,10 @@ export default async function HomePage() {
   return (
     <>
       <main className="pb-2 
-
       lg:pb-14
       xl:pb-24">
 
-        <div className={`w-full ${styles.banner_main} 1xl:max-w-[1440px] 1xl:mx-auto`}>
+        <div className={`w-full hidden lg:block ${styles.banner_main} 1xl:max-w-[1440px] 1xl:mx-auto`}>
 
           <div className=" w-[82%] mx-auto py-16 flex justify-between items-stretch   " >
 
@@ -88,7 +87,7 @@ export default async function HomePage() {
 
             </div>
 
-            <div className="w-[430px] flex flex-2 flex-col gap-3
+            <div className="w-[420px] flex flex-2 flex-col gap-3
             xl:w-[580px] xl:gap-5
             1xl:w-[624px]
             
@@ -108,8 +107,11 @@ export default async function HomePage() {
         </div >
 
 
-        <div className="w-[82%] mx-auto pt-6
-        xl:pt-10">
+        <div className={`w-[82%] mx-auto pt-6 hidden
+        lg:block
+        xl:pt-10
+        max-w-[calc(1440px*0.82)] 1xl:mx-auto`}
+        >
           <h2 className="text-xl text-white font-bold capitalize">Populares</h2>
           <div className='w-full mt-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden
           xl:mt-5 xl:gap-4
@@ -123,8 +125,10 @@ export default async function HomePage() {
         </div>
 
 
-        <div className="w-[82%] mx-auto pt-6 
-        xl:pt-10 ">
+        <div className="w-[82%] mx-auto pt-6 hidden
+         lg:block
+        xl:pt-10
+        max-w-[calc(1440px*0.82)] 1xl:mx-auto ">
           <h2 className="text-xl text-white font-bold capitalize">Mais visitados</h2>
           <div className='w-full mt-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden
           xl:mt-5 xl:gap-4

@@ -4,6 +4,7 @@ import BarberShopInfo from './_components/barberShopInfo/barberShopInfo';
 import BarberShopServices from './_components/barberShopServices/barberShopServices';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import Header from '@/layout/header/header';
 
 interface BarbershopDetailsPageProps {
     params: {
@@ -33,6 +34,30 @@ export default async function BarbershopDetailsPage({ params }: BarbershopDetail
     }
     return (
         <>
+            <div className='hidden lg:block'>
+                <Header />
+                
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <BarberShopInfo barbershop={barbershop} />
 
             <div className="px-5 flex flex-col gap-4 py-6">
@@ -40,7 +65,7 @@ export default async function BarbershopDetailsPage({ params }: BarbershopDetail
                     <BarberShopServices
                         key={service.id}
                         barbershop={barbershop}
-                        service={service} 
+                        service={service}
                         isAuthenticated={!!session?.user} />
                 ))}
             </div>
