@@ -23,12 +23,17 @@ export default function IndicadosItem({ barbershop }: ItemPropsIndicadosItem) {
     };
 
     return (
-        <Card className="w-[167px] rounded-2xl flex-none 
-        xl:w-[205px]
-        lg:w-[220px]">
+        <Card className="w-[167px] rounded-2xl flex-none
+         lg:w-[180px]
+         xl:w-[210px]
+         1xl:w-[220px]
+         
+         ">
             <CardContent className='flex flex-col p-1' >
 
-                <div className="w-full h-[159px] relative lg:h-[163px] lg:p-1">
+                <div className="w-full h-[159px] relative
+                 lg:h-[160px] lg:p-1
+                 xl:h-[163px]">
                     <div className="absolute top-2 left-2 z-50">
                         <Badge variant="secondary" className="opacity-90 flex gap-1 items-center top-3 left-3">
                             <StarIcon size={12} className="fill-primary text-primary" />

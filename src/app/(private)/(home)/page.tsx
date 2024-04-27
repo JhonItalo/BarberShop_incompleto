@@ -40,14 +40,18 @@ export default async function HomePage() {
 
   return (
     <>
-      <main className="pb-2 lg:pb-24">
+      <main className="pb-2 
 
-        <div className={`w-full ${styles.banner_main}`}>
+      lg:pb-14
+      xl:pb-24">
 
-          <div className=" w-[82%]  mx-auto py-16 flex justify-between items-stretch   " >
+        <div className={`w-full ${styles.banner_main} 1xl:max-w-[1440px] 1xl:mx-auto`}>
 
-            <div className={`w-[440px] flex flex-col ${confirmedBookings?.length > 0 ? "justify-between" : "gap-11"}
+          <div className=" w-[82%] mx-auto py-16 flex justify-between items-stretch   " >
+
+            <div className={`w-[300px] flex flex-col ${confirmedBookings?.length > 0 ? "justify-between" : "gap-11"}
             xl:w-[400px]
+            1xl:[440px]
             `}>
 
               <div className="">
@@ -70,8 +74,8 @@ export default async function HomePage() {
                 {confirmedBookings?.length > 0 && (
                   <>
                     <h2 className="text-sm uppercase text-gray-400 font-bold">Agendamentos</h2>
-                    <div className={`h-[140px] flex flex-col gap-3 overflow-y-auto
-                    xl:h-[135px]
+                    <div className={`h-[115px] flex flex-col gap-3 overflow-y-auto
+                    xl:h-[130px] 
                   ${styles.booking_items}`}>
                       {confirmedBookings.map((booking) => (
                         <BookingsItem key={booking.id} booking={booking} />
@@ -84,13 +88,15 @@ export default async function HomePage() {
 
             </div>
 
-            <div className="w-[624px] flex flex-2 flex-col gap-5
-            xl:w-[580px]
+            <div className="w-[430px] flex flex-2 flex-col gap-3
+            xl:w-[580px] xl:gap-5
+            1xl:w-[624px]
             
             ">
               <h2 className="text-sm uppercase text-gray-400 font-bold">Recomendados</h2>
-              <div className='w-full flex gap-5 overflow-x-auto [&::-webkit-scrollbar]:hidden
+              <div className='w-full flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden
               xl:gap-3
+              1xl:gap-5
               '>
                 {recommendedBarbershops.map((item) => (
                   <IndicadosItem key={item.id} barbershop={item} />
@@ -102,9 +108,13 @@ export default async function HomePage() {
         </div >
 
 
-        <div className="w-[82%] mx-auto pt-10">
+        <div className="w-[82%] mx-auto pt-6
+        xl:pt-10">
           <h2 className="text-xl text-white font-bold capitalize">Populares</h2>
-          <div className='w-full mt-5 flex gap-5 overflow-x-auto [&::-webkit-scrollbar]:hidden'>
+          <div className='w-full mt-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden
+          xl:mt-5 xl:gap-4
+          1xl:gap-5
+          '>
             {barbershopsPopulars.map((item) => (
               <IndicadosItem key={item.id} barbershop={item} />
             ))}
@@ -113,9 +123,13 @@ export default async function HomePage() {
         </div>
 
 
-        <div className="w-[82%] mx-auto pt-10">
+        <div className="w-[82%] mx-auto pt-6 
+        xl:pt-10 ">
           <h2 className="text-xl text-white font-bold capitalize">Mais visitados</h2>
-          <div className='w-full mt-5 flex gap-5 overflow-x-auto [&::-webkit-scrollbar]:hidden'>
+          <div className='w-full mt-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden
+          xl:mt-5 xl:gap-4
+          1xl:gap-5
+          '>
             {barbershopsPopulars.map((item) => (
               <IndicadosItem key={item.id} barbershop={item} />
             ))}
