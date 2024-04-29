@@ -46,7 +46,8 @@ export default async function HomePage() {
 
         <div className={`w-full hidden lg:block ${styles.banner_main} 1xl:max-w-[1440px] 1xl:mx-auto`}>
 
-          <div className=" w-[82%] mx-auto py-16 flex justify-between items-stretch   " >
+          <div className=" w-[90%] mx-auto py-16 flex justify-between items-stretch 
+          xl:w-[82%]  " >
 
             <div className={`w-[300px] flex flex-col ${confirmedBookings?.length > 0 ? "justify-between" : "gap-11"}
             xl:w-[400px]
@@ -107,9 +108,9 @@ export default async function HomePage() {
         </div >
 
 
-        <div className={`w-[82%] mx-auto pt-6 hidden
+        <div className={`w-[90%] mx-auto pt-6 hidden
         lg:block
-        xl:pt-10
+        xl:pt-10 xl:w-[82%]
         max-w-[calc(1440px*0.82)] 1xl:mx-auto`}
         >
           <h2 className="text-xl text-white font-bold capitalize">Populares</h2>
@@ -125,9 +126,9 @@ export default async function HomePage() {
         </div>
 
 
-        <div className="w-[82%] mx-auto pt-6 hidden
+        <div className="w-[90%] mx-auto pt-6 hidden
          lg:block
-        xl:pt-10
+        xl:pt-10 xl:w-[82%]
         max-w-[calc(1440px*0.82)] 1xl:mx-auto ">
           <h2 className="text-xl text-white font-bold capitalize">Mais visitados</h2>
           <div className='w-full mt-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden
