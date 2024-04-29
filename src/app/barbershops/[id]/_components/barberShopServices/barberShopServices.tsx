@@ -133,7 +133,8 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
 
 
   return (
-    <Card className='lg:w-[369px] lg:flex-none lg:mb-3
+    <Card className='
+    lg:w-full lg:flex-none lg:mb-3
     xl:w-[350px] xl:mb-4
     1xl:w-[369px] 1xl:mb-6
     '>

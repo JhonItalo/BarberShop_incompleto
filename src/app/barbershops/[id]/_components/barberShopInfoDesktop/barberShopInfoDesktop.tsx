@@ -10,7 +10,7 @@ interface barbershopInfoDesktopProps {
 export default function BarberShopInfoDesktop({ barbershop }: barbershopInfoDesktopProps) {
   return (
     <>
-      <div className='w-full rounded-2xl h-[485px] relative
+      <div className='w-full h-[400px] rounded-2xl  relative
             xl:h-[430px]
             1xl:h-[485px]
             overflow-hidden

@@ -12,18 +12,16 @@ interface props {
 export default function BarberShopDetails({ barbershop }: props) {
     return (
         <Card className='h-fit flex-none '>
-            <CardContent className='w-[290px] p-5 pb-10 h-fit lg:flex
-                    flex-col gap-5 hidden
-                    
-                    xl:w-[370px] 
+            <CardContent className='hidden w-[300px] p-3 pb-10 h-fit flex-col gap-5 
+                    lg:flex
+                    xl:w-[370px] xl:p-5
                     1xl:w-[390px]
                     '>
-
-
                 <div className=" w-full p-5 h-[180px] relative ">
                     <Image src="/barbershop-map.png" fill alt={barbershop.name} />
-                    teste
-                    <div className="w-full px-5 py-3 absolute bottom-2 left-0 ">
+
+                    <div className="w-full px-2 py-3 absolute bottom-2 left-0
+                    xl:p-5 ">
 
                         <Card className='px-5 py-3 '>
                             <CardContent className="p-0 flex items-center gap-3                                                                                                    ">
@@ -32,8 +30,11 @@ export default function BarberShopDetails({ barbershop }: props) {
                                 </Avatar>
 
                                 <div>
-                                    <h2 className="font-bold text-base">{barbershop.name}</h2>
-                                    <h3 className="text-sm overflow-hidden text-nowrap text-ellipsis">{barbershop.address}</h3>
+                                    <h2 className="font-bold text-sm
+                                    
+                                    xl:text-base">{barbershop.name}</h2>
+                                    <h3 className="text-xs overflow-hidden text-nowrap text-ellipsis
+                                    xl:text-sm">{barbershop.address}</h3>
                                 </div>
                             </CardContent>
                         </Card>
