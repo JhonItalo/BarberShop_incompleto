@@ -25,7 +25,7 @@ export default function IndicadosItem({ barbershop }: ItemPropsIndicadosItem) {
 
     return (
         <Card className="w-[167px] rounded-2xl flex-none
-         lg:w-[180px]
+         lg:w-[175px]
          xl:w-[208px]
          1xl:w-[220px]
          

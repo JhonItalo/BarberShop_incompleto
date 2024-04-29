@@ -41,15 +41,14 @@ export default async function HomePage() {
   return (
     <>
       <main className="pb-2 
-      lg:pb-14
-      xl:pb-24">
+      lg:pb-14">
 
         <div className={`w-full hidden lg:block ${styles.banner_main} 1xl:max-w-[1440px] 1xl:mx-auto`}>
 
           <div className=" w-[90%] mx-auto py-16 flex justify-between items-stretch 
           xl:w-[82%]  " >
 
-            <div className={`w-[300px] flex flex-col ${confirmedBookings?.length > 0 ? "justify-between" : "gap-11"}
+            <div className={`w-[350px] flex flex-col ${confirmedBookings?.length > 0 ? "justify-between" : "gap-11"}
             xl:w-[400px]
             1xl:[440px]
             `}>
@@ -75,7 +74,7 @@ export default async function HomePage() {
                   <>
                     <h2 className="text-sm uppercase text-gray-400 font-bold">Agendamentos</h2>
                     <div className={`h-[115px] flex flex-col gap-3 overflow-y-auto
-                    xl:h-[130px] 
+                    xl:h-[130px] pr-1
                   ${styles.booking_items}`}>
                       {confirmedBookings.map((booking) => (
                         <BookingsItem key={booking.id} booking={booking} />
@@ -88,7 +87,7 @@ export default async function HomePage() {
 
             </div>
 
-            <div className="w-[420px] flex flex-2 flex-col gap-3
+            <div className="w-[490px] flex flex-2 flex-col gap-3
             xl:w-[580px] xl:gap-5
             1xl:w-[624px]
             
@@ -114,7 +113,7 @@ export default async function HomePage() {
         max-w-[calc(1440px*0.82)] 1xl:mx-auto`}
         >
           <h2 className="text-xl text-white font-bold capitalize">Populares</h2>
-          <div className='w-full mt-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden
+          <div className='w-full mt-4 flex gap-2.5 overflow-x-auto [&::-webkit-scrollbar]:hidden
           xl:mt-5 xl:gap-4
           1xl:gap-5
           '>
@@ -131,7 +130,7 @@ export default async function HomePage() {
         xl:pt-10 xl:w-[82%]
         max-w-[calc(1440px*0.82)] 1xl:mx-auto ">
           <h2 className="text-xl text-white font-bold capitalize">Mais visitados</h2>
-          <div className='w-full mt-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden
+          <div className='w-full mt-4 flex gap-2.5 overflow-x-auto [&::-webkit-scrollbar]:hidden
           xl:mt-5 xl:gap-4
           1xl:gap-5
           '>
