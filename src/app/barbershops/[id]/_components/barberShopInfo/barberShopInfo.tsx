@@ -16,30 +16,24 @@ export default function BarberShopInfo({ barbershop }: ItemPropsBarberShopInfo) 
 
     const router = useRouter();
 
-    const [sheetIsOpen, setSheetIsOpen] = useState(false);
+    // const [sheetIsOpen, setSheetIsOpen] = useState(false);
 
     const handleBackClick = () => {
         router.replace("/");
     };
 
     return (
-        <header>
+        <header className='lg:hidden'>
             <div className='w-full h-[250px] relative'>
                 <Button onClick={handleBackClick} size="icon" variant="outline" className="z-50 absolute top-4 left-4">
                     <ChevronLeftIcon />
                 </Button>
 
-                <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}  >
-                    <SheetTrigger asChild>
-                        <Button size="icon" variant="outline" className="z-50 absolute top-4 right-4">
-                            <MenuIcon />
-                        </Button>
-                    </SheetTrigger>
+                <div className='z-50 absolute top-4 right-4'>
+                    <SideMenu />
+                </div>
 
-                    <SheetContent className="p-0">
-                        <SideMenu isOpen={setSheetIsOpen} />
-                    </SheetContent>
-                </Sheet>
+
 
 
                 <Image src={barbershop.imageUrl} fill alt={barbershop.name} style={{ objectFit: "cover" }}

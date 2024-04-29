@@ -95,7 +95,7 @@ export default function BookingsItem({ booking }: BookingItemProps) {
 
                         <div className="w-full absolute bottom-4 left-0 px-5">
                             <Card>
-                                <CardContent className="p-3 flex gap-2">
+                                <CardContent className="p-3 flex items-center gap-2">
                                     <Avatar>
                                         <AvatarImage src={booking.barbershop.imageUrl} />
                                     </Avatar>

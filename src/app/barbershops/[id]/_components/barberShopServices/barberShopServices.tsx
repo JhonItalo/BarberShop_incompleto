@@ -133,8 +133,11 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
 
 
   return (
-    <Card>
-      <CardContent className="p-3 w-full">
+    <Card className='lg:w-[369px] lg:flex-none lg:mb-3
+    xl:w-[350px] xl:mb-4
+    1xl:w-[369px] 1xl:mb-6
+    '>
+      <CardContent className="p-3 w-full ">
         <div className="flex gap-4 items-center w-full">
           <div className="relative min-h-[110px] min-w-[110px] max-h-[110px] max-w-[110px]">
             <Image
