@@ -75,7 +75,7 @@ const SideMenu = () => {
                                 </Link>
                             </Button>
                         )}
-                    </div> */
+                    </div>
                 </SheetContent>
             </Sheet>
 
