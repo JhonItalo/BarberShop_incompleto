@@ -90,16 +90,33 @@ export default async function HomePage() {
             <div className="w-[490px] flex flex-2 flex-col gap-3
             xl:w-[580px] xl:gap-5
             1xl:w-[624px]
-            
             ">
               <h2 className="text-sm uppercase text-gray-400 font-bold">Recomendados</h2>
-              <div className='w-full flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden
+
+              <div className="w-full relative">
+                <button className="w-[55px] h-[55px] flex justify-center items-center rounded-full absolute top-1/2 right-[-4%] border-2 border-[#26272B]
+                translate-y-[-50%]
+                 z-10  bg-[#141518]
+                 xl:w-[48px] xl:h-[48px]
+                 ">
+                  <svg width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.5 1.00011L12.5 12.0001L1.5 23.0001" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+
+
+
+                </button>
+
+                <div className='w-full flex gap-2 overflow-hidden
+              [&::-webkit-scrollbar]:hidden
+              overflow-hidden
               xl:gap-3
-              1xl:gap-5
+              1xl:gap-4
               '>
-                {recommendedBarbershops.map((item) => (
-                  <IndicadosItem key={item.id} barbershop={item} />
-                ))}
+                  {recommendedBarbershops.map((item) => (
+                    <IndicadosItem key={item.id} barbershop={item} />
+                  ))}
+                </div>
               </div>
             </div>
 

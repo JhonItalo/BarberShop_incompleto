@@ -27,7 +27,119 @@
 
 
 .booking_items::-moz-scrollbar-thumb {
-    background-color: #888;
+    background-color: #636262;
+    border-radius: 5px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.scrol::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+}
+
+.scrol::-webkit-scrollbar-track {
+    background-color: transparent
+}
+
+
+.scrol::-webkit-scrollbar-thumb {
+    background-color: #636262;
+    border-radius: 5px;
+
+}
+
+.scrol::-moz-scrollbar {
+    width: 5px;
+    height: 8px;
+
+}
+
+
+.scrol::-moz-scrollbar-thumb {
+    background-color: #636262;
     border-radius: 5px;
 
 }
