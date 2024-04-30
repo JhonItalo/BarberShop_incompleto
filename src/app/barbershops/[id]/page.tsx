@@ -4,9 +4,9 @@ import BarberShopInfo from './_components/barberShopInfo/barberShopInfo';
 import BarberShopServices from './_components/barberShopServices/barberShopServices';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import Header from '@/layout/header/header';
+import Header from '@/layout/header/header.';
 import BarberShopInfoDesktop from './_components/barberShopInfoDesktop/barberShopInfoDesktop';
-import Image from 'next/image';
+
 
 import BarberShopDetails from './_components/barberShopdetails/barberShopDetails';
 
