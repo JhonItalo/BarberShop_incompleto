@@ -183,6 +183,9 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
                       locale={ptBR}
                       fromDate={addDays(new Date(), 1)}
                       styles={{
+                        caption_start: {
+                          width: "100%"
+                        },
                         caption: {
                           height: "fit-content",
                           textTransform: "capitalize",
