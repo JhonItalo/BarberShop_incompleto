@@ -49,13 +49,13 @@ export default async function HomePage() {
           xl:w-[82%]  " >
 
             <div className={`w-[350px] flex flex-col ${confirmedBookings?.length > 0 ? "justify-between" : "gap-11"}
-            xl:w-[400px]
+            xl:w-[450px]
             1xl:[440px]
             `}>
 
               <div className="">
                 <h2 className="text-2xl capitalize">
-                  {session?.user ? `Olá, ${session.user.name?.split(" ")[0]}!` : "Olá! Vamos agendar um corte hoje?"}
+                  {session?.user ? `Olá, ${session.user.name?.split(" ")[0]}!` : "Olá! Faça seu login"}
                 </h2>
                 <p className="mt-1 capitalize text-sm">
                   {format(new Date(), "EEEE',' dd 'de' MMMM", {
