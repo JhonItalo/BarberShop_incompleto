@@ -1,4 +1,4 @@
-'use client'
+
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import React from 'react'
@@ -16,12 +16,6 @@ interface ItemPropsIndicadosItem {
 }
 
 export default function IndicadosItem({ barbershop }: ItemPropsIndicadosItem) {
-
-    const router = useRouter();
-
-    const handleClickAgendamento = () => {
-        router.push(`/barbershops/${barbershop.id}`);
-    };
 
     return (
         <Card className="w-[167px] rounded-2xl flex-none

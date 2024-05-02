@@ -29,7 +29,10 @@ export default function UserPerfil() {
               //onClick={handleLogoutClick}
               role='button'
             >
-              <Avatar className='w-[36px] h-[36px]'>
+              <Avatar className='w-[30px] h-[30px]
+              xl:w-[33px] xl:h-[33px]
+              1xl:w-[36px] 1xl:h-[36px]
+              '>
                 <AvatarImage src={data.user?.image ?? ""} />
               </Avatar>
 

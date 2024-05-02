@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { ptBR } from 'date-fns/locale';
-import Search from "./_components/search/search";
+
 import Indicados from "./_components/indicados/indicados";
 import { db } from '@/lib/prisma';
 import { getServerSession } from "next-auth";
@@ -9,6 +9,7 @@ import BookingsItem from "@/components/bookingsItem/bookingsItem";
 import styles from "./styles.module.scss"
 import IndicadosItem from "./_components/indicadosItem.tsx/indicadosItem";
 import SlideIndicados from "@/components/slideIndicados/slideIndicados";
+import Search from "@/components/search/search";
 
 
 
@@ -46,13 +47,11 @@ export default async function HomePage() {
 
         <div className={`w-full hidden lg:block ${styles.banner_main} 1xl:max-w-[1440px] 1xl:mx-auto`}>
 
-          <div className=" w-[90%] mx-auto py-16 flex justify-between items-stretch 
-          xl:w-[82%]  " >
+          <div className=" w-[82%] mx-auto py-16 flex gap-[7%] items-stretch 
+          xl:gap-[8%]
+          1xl:gap-[10%]  " >
 
-            <div className={`w-[350px] flex flex-col ${confirmedBookings?.length > 0 ? "justify-between" : "gap-11"}
-            xl:w-[450px]
-            1xl:[440px]
-            `}>
+            <div className={`grow flex flex-col ${confirmedBookings?.length > 0 ? "justify-between" : "gap-11"} `}>
 
               <div className="">
                 <h2 className="text-2xl capitalize">
@@ -65,7 +64,7 @@ export default async function HomePage() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-2" >
+              <div className="flex items-center gap-2 h-[36px]" >
                 <Search iconSize={20} />
               </div>
 
@@ -110,9 +109,9 @@ export default async function HomePage() {
         </div >
 
 
-        <div className={`w-[90%] mx-auto pt-6 hidden
+        <div className={`w-[82%] mx-auto pt-6 hidden
         lg:block
-        xl:pt-10 xl:w-[82%]
+        xl:pt-10 
         max-w-[calc(1440px*0.82)] 1xl:mx-auto`}
         >
           <h2 className="text-xl text-white font-bold capitalize">Populares</h2>
@@ -131,9 +130,9 @@ export default async function HomePage() {
         </div>
 
 
-        <div className="w-[90%] mx-auto pt-6 hidden
+        <div className="w-[82%]  mx-auto pt-6 hidden
         lg:block
-        xl:pt-10 xl:w-[82%]
+        xl:pt-10 
         max-w-[calc(1440px*0.82)] 1xl:mx-auto ">
 
           <h2 className="text-xl text-white font-bold capitalize">Mais visitados</h2>
