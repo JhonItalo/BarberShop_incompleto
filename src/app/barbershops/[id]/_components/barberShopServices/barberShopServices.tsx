@@ -174,7 +174,7 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
 
-                  <div className="py-5">
+                  <div className="py-5 lg:p-0">
                     <Calendar
 
                       mode="single"
@@ -190,11 +190,13 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
                           height: "fit-content",
                           textTransform: "capitalize",
                           overflow: "hidden",
-                          alignItems: "center"
+                          alignItems: "center",
+
                         },
                         head_cell: {
                           width: "100%",
                           textTransform: "capitalize",
+
                         },
                         cell: {
                           width: "100%",
@@ -205,6 +207,7 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
                         nav_button_previous: {
                           width: "32px",
                           height: "32px",
+
                         },
                         nav_button_next: {
                           width: "32px",
