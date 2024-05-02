@@ -11,7 +11,7 @@ interface props {
 
 export default function BarberShopDetails({ barbershop }: props) {
     return (
-        <Card className='h-fit flex-none '>
+        <Card className='h-fit flex-none  '>
             <CardContent className='hidden w-[300px] p-3 pb-10 h-fit flex-col gap-5 
                     lg:flex
                     xl:w-[370px] xl:p-5

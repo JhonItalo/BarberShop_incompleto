@@ -19,8 +19,8 @@ export default function Header() {
     <header>
       <Card className='lg:rounded-none max-w-[1440px] 1xl:mx-auto'>
         <CardContent className='py-6 px-5 flex justify-between items-center
-                lg:w-[90%] lg:mx-auto lg:px-0 lg:py-4 
-                xl:py-5 xl:w-[82%]
+                lg:w-[82%] lg:mx-auto lg:px-0 lg:py-4 
+                xl:py-5
                 1xl:py-8 
                 '>
 

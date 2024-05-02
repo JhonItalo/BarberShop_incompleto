@@ -38,6 +38,7 @@ export default async function BarbershopDetailsPage({ params }: BarbershopDetail
   if (!barbershop) {
     return null;
   }
+
   return (
     <>
       <div className='hidden lg:block'>
@@ -45,14 +46,11 @@ export default async function BarbershopDetailsPage({ params }: BarbershopDetail
       </div>
 
       <main>
-        <div className='hidden w-[90%] mx-auto py-10 lg:flex justify-between
-         xl:py-8 xl:w-[82%]
+        <div className='hidden w-[82%] mx-auto py-10 lg:flex gap-[3%]
+         xl:py-8 xl:gap-[2%]
          1xl:max-w-[calc(1440px*0.82)]'>
 
-          <div className='w-[600px] flex flex-col
-                    xl:w-[715px]
-                    1xl:w-[760px]
-                    '>
+          <div className='grow flex flex-col'>
             <div className='flex flex-col gap-5 '>
               <BarberShopInfoDesktop barbershop={barbershop} />
             </div>
@@ -61,7 +59,7 @@ export default async function BarbershopDetailsPage({ params }: BarbershopDetail
               <p className='text-sm font-bold uppercase'>Serviços</p>
 
               <div className="w-full flex flex-col flex-wrap justify-between
-              xl:flex-row
+              xl:flex-row 
               ">
                 {barbershop.services.map((service) => (
                   <BarberShopServices
