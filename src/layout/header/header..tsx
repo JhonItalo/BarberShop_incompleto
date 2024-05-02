@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import React from 'react';
 import Link from 'next/link';
 import SideMenu from '../sideMenu/sideMenu';
-import Search from '@/app/(private)/(home)/_components/search/search';
+import Search from '@/components/search/search';
 import UserPerfil from '@/components/userPerfil/userPerfil';
 
 
@@ -42,11 +42,14 @@ export default function Header() {
             </svg>
           </Link>
 
-          <form className={`w-[580px] h-[36px] ${pathname === "/" ? "hidden" : "lg:flex hidden"} gap-2 `}>
+          <div className={`w-[400px] h-[36px]  ${pathname === "/" ? "hidden" : "lg:flex hidden"} gap-2 
+          xl:w-[580px] h-[36px]
+          1xl:h-[40px] 1xl:w-[600px]    
+          `}>
             <Search iconSize={20} />
-          </form>
+          </div>
 
-          <div className='hidden lg:flex gap-6 items-center '>
+          <div className='hidden lg:flex gap-6 items-center  '>
 
             <Link href="/bookings" className='px-4 py-2 flex gap-2 items-center'>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
