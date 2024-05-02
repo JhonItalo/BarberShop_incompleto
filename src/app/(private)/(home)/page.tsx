@@ -8,7 +8,7 @@ import { authOptions } from "@/lib/auth";
 import BookingsItem from "@/components/bookingsItem/bookingsItem";
 import styles from "./styles.module.scss"
 import IndicadosItem from "./_components/indicadosItem.tsx/indicadosItem";
-import SlideGeneric from "@/components/slideGeneric/slideGeneric";
+import SlideIndicados from "@/components/slideIndicados/slideIndicados";
 
 
 
@@ -93,8 +93,8 @@ export default async function HomePage() {
             1xl:w-[624px]
             ">
               <h2 className="text-sm uppercase text-gray-400 font-bold">Recomendados</h2>
-              
-              <SlideGeneric
+
+              <SlideIndicados
                 buttonPosition="-4%"
                 className="w-full flex gap-2 [&::-webkit-scrollbar]:hidden overflow-hidden 
                 xl:gap-3
@@ -103,7 +103,7 @@ export default async function HomePage() {
                 {recommendedBarbershops.map((item) => (
                   <IndicadosItem key={item.id} barbershop={item} />
                 ))}
-              </SlideGeneric >
+              </SlideIndicados >
             </div>
 
           </div >
@@ -117,8 +117,9 @@ export default async function HomePage() {
         >
           <h2 className="text-xl text-white font-bold capitalize">Populares</h2>
 
-          <SlideGeneric
+          <SlideIndicados
             buttonPosition="-2%"
+            scrollMove={1}
             className='w-full mt-4 flex gap-2.5 overflow-x-hidden [&::-webkit-scrollbar]:hidden
             xl:mt-5 xl:gap-4
             1xl:gap-5
@@ -126,19 +127,20 @@ export default async function HomePage() {
             {barbershopsPopulars.map((item) => (
               <IndicadosItem key={item.id} barbershop={item} />
             ))}
-          </SlideGeneric >
+          </ SlideIndicados>
         </div>
 
 
         <div className="w-[90%] mx-auto pt-6 hidden
-         lg:block
+        lg:block
         xl:pt-10 xl:w-[82%]
         max-w-[calc(1440px*0.82)] 1xl:mx-auto ">
 
           <h2 className="text-xl text-white font-bold capitalize">Mais visitados</h2>
 
-          <SlideGeneric
+          <SlideIndicados
             buttonPosition="-2%"
+            scrollMove={1}
             className='w-full mt-4 flex gap-2.5 overflow-x-hidden [&::-webkit-scrollbar]:hidden
             xl:mt-5 xl:gap-4
             1xl:gap-5
@@ -146,7 +148,7 @@ export default async function HomePage() {
             {barbershopsPopulars.map((item) => (
               <IndicadosItem key={item.id} barbershop={item} />
             ))}
-          </SlideGeneric>
+          </SlideIndicados>
 
         </div>
 
