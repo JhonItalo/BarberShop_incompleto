@@ -1,7 +1,5 @@
 "use client"
 
-import IndicadosItem from '@/app/(private)/(home)/_components/indicadosItem.tsx/indicadosItem'
-import { Barbershop } from '@prisma/client'
 import React, { useRef, ElementRef, useState, useEffect } from 'react'
 
 
@@ -30,7 +28,7 @@ export default function SlideIndicados({ children, className, buttonPosition, si
       return () => {
         clearTimeout(timeoutId);
       };
-    }, 500);
+    }, 900);
 
 
   }, [scrollLeft]);
