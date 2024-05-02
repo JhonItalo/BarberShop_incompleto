@@ -169,7 +169,7 @@ export default function BarberShopServicesItem({ barbershop, service, isAuthenti
                   </Button>
                 </SheetTrigger>
 
-                <SheetContent className="p-0 pb-4">
+                <SheetContent className="p-0 pb-4 overflow-auto [&::-webkit-scrollbar]:hidden ">
                   <SheetHeader className="text-left px-5 py-6 border-b border-solid border-secondary">
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
