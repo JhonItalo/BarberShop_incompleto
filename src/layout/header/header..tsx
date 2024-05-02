@@ -1,5 +1,6 @@
-"use client";
+"use client"
 
+import { usePathname } from 'next/navigation'
 import { Card, CardContent } from '@/components/ui/card';
 import React from 'react';
 import Link from 'next/link';
@@ -10,6 +11,10 @@ import UserPerfil from '@/components/userPerfil/userPerfil';
 
 
 export default function Header() {
+
+  const pathname = usePathname()
+
+
   return (
     <header>
       <Card className='lg:rounded-none max-w-[1440px] 1xl:mx-auto'>
@@ -37,9 +42,9 @@ export default function Header() {
             </svg>
           </Link>
 
-          <div className='w-[580px] flex gap-2'>
+          <form className={`w-[580px] h-[36px] ${pathname === "/" ? "hidden" : "lg:flex hidden"} gap-2 `}>
             <Search iconSize={20} />
-          </div>
+          </form>
 
           <div className='hidden lg:flex gap-6 items-center '>
 
