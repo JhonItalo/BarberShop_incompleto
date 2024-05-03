@@ -29,13 +29,13 @@ export default async function BarberShopPage({ searchParams }: BarbershopsPagePr
 
     return (
         <>
-            <div className='hidden lg:block'>
+            <div className=''>
                 <Header />
             </div>
 
             <main >
-                <div className='mx-auto py-10 flex flex-col gap-5
-                  lg:w-[82%]
+                <div className='mx-auto px-5 py-10 flex flex-col gap-5
+                  lg:w-[82%] lg:px-0
                   min-h-[100vh-]
                 ' >
                     <h2 className='font-bold text-xl'>Resultados para {`"${searchParams.search}"`}</h2>
