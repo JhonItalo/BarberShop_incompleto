@@ -19,10 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} dark`}>
+      <body className={`${inter.className} dark flex flex-col justify-between min-h-[100vh]`}>
         <Providers>
-          {children}
           <Toaster />
+          <div>
+            {children}
+          </div>
           <Footer />
         </Providers>
       </body>

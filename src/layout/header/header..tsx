@@ -42,7 +42,7 @@ export default function Header() {
             </svg>
           </Link>
 
-          <div className={`w-[400px] h-[36px]  ${pathname === "/" ? "hidden" : "lg:flex hidden"} gap-2 
+          <div className={`w-[320px] h-[36px]  ${pathname === "/" ? "hidden" : "lg:flex hidden"} gap-2 
           xl:w-[580px] h-[36px]
           1xl:h-[40px] 1xl:w-[600px]    
           `}>
