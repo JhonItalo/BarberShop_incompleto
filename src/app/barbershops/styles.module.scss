@@ -1,0 +1,13 @@
+.slide {
+    >div {
+        margin-bottom: 20px;
+
+    }
+
+    @media (max-width: 1366px) {
+        >div {
+            margin-bottom: 10px;
+
+        }
+    }
+}

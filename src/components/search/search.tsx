@@ -24,7 +24,7 @@ export default function Search({ iconSize }: props) {
 
       />
 
-      <Link href={`/search/${value}`} className='h-full'>
+      <Link href={`/barbershops/?search=${value}`} className='h-full'>
         <Button variant='default' size='icon' className='h-full'>
           <SearchIcon size={iconSize} />
         </Button>
