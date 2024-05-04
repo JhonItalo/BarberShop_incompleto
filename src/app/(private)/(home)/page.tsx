@@ -159,18 +159,6 @@ export default async function HomePage() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         <div className="py-6 px-5 lg:hidden">
           <h2 className="text-xl font-bold capitalize">
             {session?.user ? `Olá, ${session.user.name?.split(" ")[0]}!` : "Olá! Vamos agendar um corte hoje?"}
@@ -182,7 +170,7 @@ export default async function HomePage() {
           </p>
         </div>
 
-        <div className='px-5 flex items-center gap-2 
+        <div className='px-5 h-[35px] flex items-center gap-2
         lg:hidden' >
           <Search iconSize={20} />
         </div>

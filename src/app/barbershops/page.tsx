@@ -36,16 +36,22 @@ export default async function BarberShopPage({ searchParams }: BarbershopsPagePr
             <main >
                 <div className='mx-auto px-5 py-10 flex flex-col gap-5
                   lg:w-[82%] lg:px-0
-                  min-h-[100vh-]
+                  min-h-[100vh]
                 ' >
                     <h2 className='font-bold text-xl'>Resultados para {`"${searchParams.search}"`}</h2>
-                    {barbershops.length > 0 ? (<div className={`flex flex-wrap gap-4 ${styles.slide}`}>
-                        {barbershops.map((item) => (
-                            <IndicadosItem key={item.id} barbershop={item} />
-                        ))}
-                    </div>) : (
-                        <p>Não foram encontrados resultados</p>
-                    )}
+
+                    {barbershops.length > 0 ? (
+                        <div className={`justify-center lg:justify-normal flex flex-wrap gap-4 ${styles.slide}`}>
+                            {barbershops.map((item) => (
+
+                                <IndicadosItem key={item.id} barbershop={item} />
+
+
+                            ))}
+                        </div>) :
+                        (
+                            <p>Não foram encontrados resultados</p>
+                        )}
 
                 </div>
 

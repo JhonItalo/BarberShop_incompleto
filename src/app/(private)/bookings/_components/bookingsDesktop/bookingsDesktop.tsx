@@ -77,52 +77,54 @@ export default function BookingsDesktop({ confirmed, finished }: BookingsDesktop
       <div>
         <h2 className='font-bold text-2xl'>Agendamentos</h2>
 
-        <div className='mt-5 flex gap-4
+        {!bookingSelect ? <p>Nenhum resultado encontrado</p>
+
+          :
+          <div className='mt-5 flex gap-4
         xl:gap-6
         1xl:gap-10 '>
 
-          <div className='grow'>
+            <div className='grow'>
 
-            <h3 className="text-gray-400 uppercase font-bold text-sm ">Confirmados</h3>
+              <h3 className="text-gray-400 uppercase font-bold text-sm ">Confirmados</h3>
 
-            {confirmed.length > 0 && (
-              <div className="mt-2.5 flex flex-col gap-4 relative">
-                {confirmed.map((booking) => (
-                  <div key={booking.id} className='relative'>
-                    <BookingsItem booking={booking} />
-                    <div className='w-full h-full absolute top-0 lef-0' onClick={() => handleSelectBookingClick(booking)} />
-                  </div>
-                ))}
-              </div>
+              {confirmed.length > 0 && (
+                <div className="mt-2.5 flex flex-col gap-4 relative">
+                  {confirmed.map((booking) => (
+                    <div key={booking.id} className='relative'>
+                      <BookingsItem booking={booking} />
+                      <div className='w-full h-full absolute top-0 lef-0' onClick={() => handleSelectBookingClick(booking)} />
+                    </div>
+                  ))}
+                </div>
 
-            )}
+              )}
 
-            <h3 className="mt-5 text-gray-400 uppercase font-bold text-sm ">finalizados</h3>
+              <h3 className="mt-5 text-gray-400 uppercase font-bold text-sm ">finalizados</h3>
 
-            {finished.length > 0 && (
-              <div className="mt-2.5 flex flex-col gap-3">
-                {finished.map((booking) => (
-                  <div key={booking.id} className='relative'>
-                    <BookingsItem booking={booking} />
-                    <div className='w-full h-full absolute top-0 lef-0' onClick={() => handleSelectBookingClick(booking)} />
-                  </div>
-                ))}
-              </div>
+              {finished.length > 0 && (
+                <div className="mt-2.5 flex flex-col gap-3">
+                  {finished.map((booking) => (
+                    <div key={booking.id} className='relative'>
+                      <BookingsItem booking={booking} />
+                      <div className='w-full h-full absolute top-0 lef-0' onClick={() => handleSelectBookingClick(booking)} />
+                    </div>
+                  ))}
+                </div>
 
-            )}
-
-
-          </div>
+              )}
 
 
-          <div className='w-[320px]
+            </div>
+
+
+            <div className='w-[320px]
           xl:w-[400px]
           1xl:w-[440px]'>
-            <h3 className="uppercase font-bold text-sm invisible"> l</h3>
+              <h3 className="uppercase font-bold text-sm invisible"> l</h3>
 
-            {bookingSelect &&
-              (<Card className='mt-2.5 p-3
-                            xl:p-5'>
+              <Card className='mt-2.5 p-3
+                  xl:p-5    '>
                 <CardContent className='p-0 flex flex-col gap-5'>
 
                   <div className="w-full h-[180px] relative">
@@ -254,14 +256,14 @@ export default function BookingsDesktop({ confirmed, finished }: BookingsDesktop
                 </CardContent>
               </Card>
 
-              )}
 
 
+
+            </div>
           </div>
-        </div>
-
-
+        }
       </div >
+
 
     </>
   )
