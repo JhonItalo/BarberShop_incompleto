@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import React from 'react'
 import { db } from '@/lib/prisma';
 import BookingsItem from '@/components/bookingsItem/bookingsItem';
+import BookingsDesktop from './_components/bookingsDesktop/bookingsDesktop';
 
 export default async function BookingsPage() {
   const session = await getServerSession(authOptions);
@@ -38,12 +39,18 @@ export default async function BookingsPage() {
       },
     }),
   ]);
-  
-  return (
-    <>
-      <div className="px-5 py-6">
-        <h1 className="text-xl font-bold mb-6">Agendamentos</h1>
 
+  return (
+
+    <main>
+      <div className='w-[70%] py-10 mx-auto lg:block hidden max-w-[calc(1440px*0.64)]
+      xl:w-[64%]'>
+        <BookingsDesktop confirmed={confirmedBookings} finished={finishedBookings} />
+
+      </div>
+
+      <div className="px-5 py-6 lg:hidden">
+        <h1 className="text-xl font-bold mb-6">Agendamentos</h1>
         {confirmedBookings.length > 0 && (
           <>
             <h2 className="text-gray-400 uppercase font-bold text-sm mb-3">Confirmados</h2>
@@ -54,7 +61,6 @@ export default async function BookingsPage() {
             </div>
           </>
         )}
-
         {finishedBookings.length > 0 && (
           <>
             <h2 className="text-gray-400 uppercase font-bold text-sm mt-6 mb-3">Finalizados</h2>
@@ -66,6 +72,7 @@ export default async function BookingsPage() {
           </>
         )}
       </div>
-    </>
+    </main>
+
   )
 }

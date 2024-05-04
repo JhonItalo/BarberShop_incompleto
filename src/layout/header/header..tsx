@@ -11,10 +11,7 @@ import UserPerfil from '@/components/userPerfil/userPerfil';
 
 
 export default function Header() {
-
   const pathname = usePathname()
-
-
   return (
     <header>
       <Card className='lg:rounded-none max-w-[1440px] 1xl:mx-auto'>
