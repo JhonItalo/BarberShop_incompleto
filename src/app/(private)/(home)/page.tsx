@@ -10,6 +10,7 @@ import styles from "./styles.module.scss"
 import IndicadosItem from "./_components/indicadosItem.tsx/indicadosItem";
 import SlideIndicados from "@/components/slideIndicados/slideIndicados";
 import Search from "@/components/search/search";
+import Image from "next/image";
 
 
 
@@ -17,11 +18,16 @@ export default async function HomePage() {
 
   const session = await getServerSession(authOptions);
 
-  const [recommendedBarbershops, barbershopsPopulars, confirmedBookings] = await Promise.all([
+  const [recommendedBarbershops, barbershopsPopulars, barbershopsMostViwwed, confirmedBookings] = await Promise.all([
     db.barbershop.findMany({}),
     db.barbershop.findMany({
       orderBy: {
         id: "asc",
+      },
+    }),
+    db.barbershop.findMany({
+      orderBy: {
+        id: "desc",
       },
     }),
     session?.user
@@ -45,7 +51,23 @@ export default async function HomePage() {
       <main className="pb-2 
       lg:pb-14">
 
-        <div className={`w-full hidden lg:block ${styles.banner_main} 1xl:max-w-[1440px] 1xl:mx-auto`}>
+        <div className={`w-full hidden relative lg:block 
+         1xl:max-w-[1440px] 1xl:mx-auto`}>
+
+          <Image
+            alt="background"
+            src="/backgournd-bannermain.jpg"
+            style={{
+              objectFit: "cover",
+              objectPosition: "top center",
+              opacity: 0.3,
+              zIndex: -1
+            }}
+            fill
+            className="rounded-xl"
+          />
+
+
 
           <div className=" w-[82%] mx-auto py-16 flex gap-[7%] items-stretch 
           xl:gap-[8%]
@@ -144,7 +166,7 @@ export default async function HomePage() {
             xl:mt-5 xl:gap-4
             1xl:gap-5
           '>
-            {barbershopsPopulars.map((item) => (
+            {barbershopsMostViwwed.map((item) => (
               <IndicadosItem key={item.id} barbershop={item} />
             ))}
           </SlideIndicados>
