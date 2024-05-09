@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import React from 'react'
 import Image from 'next/image'
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 
 import { Barbershop } from "@prisma/client";
 import { Button } from '@/components/ui/button';
@@ -19,13 +19,8 @@ export default function IndicadosItem({ barbershop }: ItemPropsIndicadosItem) {
 
     return (
         <Card className="w-[167px] rounded-2xl flex-none
-         lg:w-[175px]
-         xl:w-[208px]
-         1xl:w-[220px]
-         
-         ">
+         lg:w-full">
             <CardContent className='flex flex-col p-1' >
-
                 <div className="w-full h-[159px] relative
                  lg:h-[160px] lg:p-1
                  xl:h-[163px]">

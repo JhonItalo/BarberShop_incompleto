@@ -67,8 +67,6 @@ export default async function HomePage() {
             className="rounded-xl"
           />
 
-
-
           <div className=" w-[82%] mx-auto py-16 flex gap-[7%] items-stretch 
           xl:gap-[8%]
           1xl:gap-[10%]  " >
@@ -115,40 +113,33 @@ export default async function HomePage() {
             ">
               <h2 className="text-sm uppercase text-gray-400 font-bold">Recomendados</h2>
 
-              <SlideIndicados
-                buttonPosition="-4%"
-                className="w-full flex gap-2 [&::-webkit-scrollbar]:hidden overflow-hidden 
+              <div className="w-full flex gap-2 [&::-webkit-scrollbar]:hidden overflow-hidden 
                 xl:gap-3
-                1xl:gap-4
-              ">
+                1xl:gap-4">
                 {recommendedBarbershops.map((item) => (
-                  <IndicadosItem key={item.id} barbershop={item} />
+                  <div key={item.id} className="w-[175px] flex-none
+                  xl:w-[208px]
+                  1xl:w-[220px]">
+                    <IndicadosItem barbershop={item} />
+                  </div>
+
                 ))}
-              </SlideIndicados >
+
+              </div>
             </div>
 
           </div >
+
         </div >
 
 
         <div className={`w-[82%] mx-auto pt-6 hidden
         lg:block
         xl:pt-10 
-        max-w-[calc(1440px*0.82)] 1xl:mx-auto`}
+        max-w-[calc(1440px*0.82)] 1xl:mx-auto `}
         >
           <h2 className="text-xl text-white font-bold capitalize">Populares</h2>
-
-          <SlideIndicados
-            buttonPosition="-2%"
-            scrollMove={1}
-            className='w-full mt-4 flex gap-2.5 overflow-x-hidden [&::-webkit-scrollbar]:hidden
-            xl:mt-5 xl:gap-4
-            1xl:gap-5
-          '>
-            {barbershopsPopulars.map((item) => (
-              <IndicadosItem key={item.id} barbershop={item} />
-            ))}
-          </ SlideIndicados>
+          <SlideIndicados barbershops={barbershopsPopulars} />
         </div>
 
 
@@ -158,18 +149,7 @@ export default async function HomePage() {
         max-w-[calc(1440px*0.82)] 1xl:mx-auto ">
 
           <h2 className="text-xl text-white font-bold capitalize">Mais visitados</h2>
-
-          <SlideIndicados
-            buttonPosition="-2%"
-            scrollMove={1}
-            className='w-full mt-4 flex gap-2.5 overflow-x-hidden [&::-webkit-scrollbar]:hidden
-            xl:mt-5 xl:gap-4
-            1xl:gap-5
-          '>
-            {barbershopsMostViwwed.map((item) => (
-              <IndicadosItem key={item.id} barbershop={item} />
-            ))}
-          </SlideIndicados>
+          <SlideIndicados barbershops={barbershopsMostViwwed} />
 
         </div>
 
@@ -203,9 +183,11 @@ export default async function HomePage() {
             <>
               <h2 className="pl-5 text-xs mb-3 uppercase text-gray-400 font-bold">Agendamentos</h2>
               <div className="px-5 mb-4 flex flex-col gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+
                 {confirmedBookings.map((booking) => (
                   <BookingsItem key={booking.id} booking={booking} />
                 ))}
+
               </div>
             </>
           )}

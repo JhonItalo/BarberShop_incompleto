@@ -8,8 +8,6 @@ import SideMenu from '../sideMenu/sideMenu';
 import Search from '@/components/search/search';
 import UserPerfil from '@/components/userPerfil/userPerfil';
 
-
-
 export default function Header() {
   const pathname = usePathname()
   return (

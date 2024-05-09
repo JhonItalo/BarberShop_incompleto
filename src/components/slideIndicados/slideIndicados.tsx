@@ -1,63 +1,92 @@
 "use client"
 
-import React, { useRef, ElementRef, useState, useEffect } from 'react'
+import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';;
+
+import { Barbershop } from '@prisma/client';
+import IndicadosItem from '@/app/(private)/(home)/_components/indicadosItem.tsx/indicadosItem';
+import { SwiperNavButtons } from "../swiperNavButtons/SwiperNavButtons";
+import { useRef } from 'react';
 
 
 interface SlideIndicadosItemsProps {
-  children: React.ReactNode
-  className: string;
-  buttonPosition: string
-  size?: string
-  scrollMove?: number
+  barbershops: Barbershop[]
+
 }
 
-export default function SlideIndicados({ children, className, buttonPosition, size, scrollMove }: SlideIndicadosItemsProps) {
-  const slideRef = useRef<ElementRef<"div">>(null);
+export default function SlideIndicados({ barbershops }: SlideIndicadosItemsProps) {
+  const slideRef = useRef<SwiperRef>(null);
 
-  const [activePreviousButton, setActivePreviousButton] = useState<boolean>(false);
-  const [scrollLeft, setScrollLeft] = useState<boolean>(false)
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      if (slideRef.current) {
-        console.log(slideRef.current.scrollLeft, "scrol")
-        if (slideRef.current.scrollLeft === 0) {
-          setActivePreviousButton(false)
-        }
-      }
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }, 900);
-
-
-  }, [scrollLeft]);
-
-  const handleClickNextSlide = () => {
-    if (slideRef.current) {
-      if (scrollMove) {
-        slideRef.current.scrollLeft += slideRef.current.offsetWidth * scrollMove
-      } else {
-        slideRef.current.scrollLeft += slideRef.current.offsetWidth * 0.75
-      }
-    }
-    setActivePreviousButton(true)
-  }
-
-  const handleClickPreviousSlide = () => {
-    if (slideRef.current) {
-      if (scrollMove) {
-        slideRef.current.scrollLeft -= slideRef.current.offsetWidth * scrollMove
-      } else {
-        slideRef.current.scrollLeft -= slideRef.current.offsetWidth * 0.75
-      }
-    }
-    setScrollLeft((prev) => !prev)
-  }
 
   return (
-    <>
-      <div className={` relative ${size ? size : "w-full"}`}>
+
+    <Swiper
+      className='mt-4'
+      slidesPerGroup={2}
+      speed={700}
+      breakpoints={{
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 20
+        },
+        1280: {
+          slidesPerView: 5,
+          spaceBetween: 10
+        },
+        1440: {
+          slidesPerView: 5,
+          spaceBetween: 20
+        }
+      }}
+      initialSlide={0}
+      allowTouchMove={false}
+      grabCursor={false}
+      ref={slideRef}
+    >
+      {
+        barbershops.map((item) => (
+          <SwiperSlide key={item.id}>
+            <IndicadosItem key={item.id} barbershop={item} />
+          </SwiperSlide>
+        ))
+      }
+
+      <SwiperNavButtons refi={slideRef} />
+
+    </ Swiper>
+
+
+
+  )
+}
+
+
+/*
+ <Swiper
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      spaceBetween={10}
+      slidesPerView={5}
+      navigation
+      pagination={{ clickable: false }}
+
+    >
+      {barbershops.map((item) => (
+        <SwiperSlide key={item.id}>
+          <IndicadosItem key={item.id} barbershop={item} />
+        </SwiperSlide>
+      ))}
+
+    </Swiper>
+*/
+
+/*
+
+ <div className={` relative ${size ? size : "w-full"}`}>
 
         <button onClick={handleClickNextSlide}
           style={{ right: buttonPosition }}
@@ -77,7 +106,7 @@ export default function SlideIndicados({ children, className, buttonPosition, si
         <button onClick={handleClickPreviousSlide}
           style={{ left: buttonPosition }}
           className={`w-[40px] h-[40px] flex justify-center items-center rounded-full absolute top-1/2  border-2 rotate-180 border-[#26272B] translate-y-[-50%]
-					${activePreviousButton ? "" : "hidden"}
+          ${activePreviousButton ? "" : "hidden"}
           z-10  bg-[#141518]
           xl:w-[45px] xl:h-[45px]
           1xl:w-[55px] 1xl:h-[55px]
@@ -97,6 +126,4 @@ export default function SlideIndicados({ children, className, buttonPosition, si
       </div>
 
 
-    </>
-  )
-}
+*/
